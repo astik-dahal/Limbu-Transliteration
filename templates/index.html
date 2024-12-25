@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Limbu Transliteration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Namdhinggo:wght@400;500;600;700;800&family=Noto+Sans+Limbu&display=swap"
+        rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styling.css') }}">
+
+</head>
+
+<body>
+    <h1>Multi-Mode Transliteration Demo</h1>
+    
+    <p>Select which transliteration you want:</p>
+    
+    <!-- We'll do a form that includes a "translit_mode" dropdown 
+         plus the user input field. -->
+    <form method="POST" id="translitForm">
+      <label for="translit_mode">Transliterate:</label>
+      <select name="translit_mode" id="translit_mode">
+        <option value="limbu_to_roman"
+          {% if translit_mode == "limbu_to_roman" %}selected{% endif %}>Limbu → Roman</option>
+        <option value="limbu_to_devanagari"
+          {% if translit_mode == "limbu_to_devanagari" %}selected{% endif %}>Limbu → Devanagari</option>
+        <option value="devanagari_to_limbu"
+          {% if translit_mode == "devanagari_to_limbu" %}selected{% endif %}>Devanagari → Limbu</option>
+        <option value="roman_to_limbu"
+          {% if translit_mode == "roman_to_limbu" %}selected{% endif %}>Roman → Limbu</option>
+      </select>
+    
+      <br><br>
+    
+      <!-- Quick "test data" buttons, each specific to your mode. 
+           For example, if the user picks "limbu_to_roman", let's give Limbu digits or alphabets. -->
+      <div>
+        <button type="button" onclick="loadModeSamples()">Load Sample for Mode</button>
+      </div>
+    
+      <br>
+    
+      <label for="user_input">Enter text here:</label><br>
+      <textarea name="user_input" id="user_input" rows="4" cols="60">{{ user_input }}</textarea>
+      <br><br>
+    
+      <button type="submit">Submit</button>
+    </form>
+    
+    <!-- If we have an output_text, display it -->
+    {% if output_text %}
+    <div class="result-container">
+      <strong>Result:</strong>
+      <p>{{ output_text }}</p>
+    </div>
+    
+    <button class="debug-accordion">Open logs</button>
+    <div class="debug-panel">
+      <pre>{{ debug_logs }}</pre>
+    </div>
+    {% endif %}
+    
+    <script>
+    function loadModeSamples() {
+      // Let's see what mode is selected:
+      const mode = document.getElementById("translit_mode").value;
+      let sampleText = "";
+    
+      if (mode === "limbu_to_roman") {
+        // For example, a string of Limbu digits or alphabets
+        sampleText = "᥆᥇᥈᥉᥊ (digits) ᤁᤂᤃᤄ (some alphabets)";
+      }
+      else if (mode === "limbu_to_devanagari") {
+        sampleText = "ᤁᤂᤃᤄ (Testing Limbu → Devanagari)";
+      }
+      else if (mode === "devanagari_to_limbu") {
+        // A chunk of Devanagari text to test
+        sampleText = "कःकफेक्वा साःफेक्वा (some month names, etc.)";
+      }
+      else if (mode === "roman_to_limbu") {
+        sampleText = "kha-ng, bha, cha, -rʲ (some roman forms)";
+      }
+    
+      document.getElementById("user_input").value = sampleText;
+    }
+    
+    // A small accordion for logs
+    let debugAccordion = document.getElementsByClassName("debug-accordion")[0];
+    if (debugAccordion) {
+      debugAccordion.addEventListener("click", function(){
+        this.classList.toggle("active");
+        let panel = document.getElementsByClassName("debug-panel")[0];
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+    </script>
+
+</html>

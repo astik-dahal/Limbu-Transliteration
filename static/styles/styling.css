@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Namdhinggo';
+    src: url('/static/fonts/Namdhinggo-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'NotoSansLimbu';
+    src: url('/static/fonts/NotoSansLimbu-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'NotoSansDevanagari';
+    src: url('/static/fonts/NotoSansDevanagari-Regular.ttf');
+  }
+  
+  html, textarea, pre{
+    font-family: 'Namdhinggo','NotoSansLimbu', 'Arial', 'Roboto', 'serif';
+  }
+.accordion {
+    background-color: #eee;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+    margin-top: 10px;
+}
+
+.active,
+.accordion:hover {
+    background-color: #ccc;
+}
+
+.panel {
+    padding: 0 15px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+.result-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #333;
+    background: #f9f9f9;
+}
+
+  .debug-accordion {
+    background-color: #eee;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+  }
+  .debug-panel {
+    display: none;
+    background-color: white;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
