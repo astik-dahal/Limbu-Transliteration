@@ -17,7 +17,7 @@ This repository hosts a **Limbu Transliteration System**, enabling seamless conv
 
 ## Project Motivation
 
-The **Limbu language** is spoken by approximately 343,000 people, primarily in Nepal, India, and Bhutan. With no existing transliteration service for this language, the project aims to:
+The **Limbu language** is spoken by approximately 410,000 people, primarily in Nepal, India, and Bhutan. With no existing transliteration service for this language, the project aims to:
 
 1. **Preserve Linguistic Heritage**: Enable wider digital usage of the Limbu script.
 2. **Bridge Cultural Gaps**: Facilitate communication between communities using different scripts.
